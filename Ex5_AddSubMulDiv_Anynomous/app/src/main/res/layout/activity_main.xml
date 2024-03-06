@@ -20,7 +20,7 @@
         android:textSize="18dp"
         android:textColor="@color/black"/>
         <EditText
-            android:id="@+id/edtSo1"
+            android:id="@+id/edtSoA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập số"/>
@@ -39,7 +39,7 @@
             android:textSize="18dp"
             android:textColor="@color/black"/>
         <EditText
-            android:id="@+id/edtSo2"
+            android:id="@+id/edtSoB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập số"/>
