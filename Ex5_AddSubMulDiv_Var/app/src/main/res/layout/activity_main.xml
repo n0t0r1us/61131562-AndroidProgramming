@@ -1,102 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:padding="5dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_height="50dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số a: "
-            android:textSize="18dp"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/edtSoA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập số"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:padding="5dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_height="50dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số b: "
-            android:textSize="18dp"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/edtSoB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nhập số"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:padding="5dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center_horizontal"
-        android:layout_height="50dp"
-        >
-        <Button
-            android:id="@+id/btnCong"
-            android:layout_margin="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"/>
-        <Button
-            android:id="@+id/btnTru"
-            android:layout_margin="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"/>
-        <Button
-            android:id="@+id/btnNhan"
-            android:layout_margin="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*"/>
-        <Button
-            android:id="@+id/btnChia"
-            android:layout_margin="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:padding="5dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_height="50dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kết quả: "
-            android:textSize="18dp"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/edtKQ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hiện kết quả"
-            android:enabled="false"/>
-    </LinearLayout>
 
+    <TextView
+        android:id="@+id/textSo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số a:"
+        android:textColor="#050000"
+        android:textSize="21dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"/>
 
+    <EditText
+        android:id="@+id/edtSo1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Mời nhập 1 con số ở đây"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textSo1"
+        app:layout_constraintTop_toTopOf="@+id/textSo1"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textSo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số b: "
+        android:textColor="#050000"
+        android:textSize="21dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSo1"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/edtSo2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Mời nhập 1 con số ở đây"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textSo2"
+        app:layout_constraintTop_toTopOf="@+id/textSo2"/>
+
+    <Button
+        android:id="@+id/btnCong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSo2"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/btnTru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="15dp"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSo2" />
+
+    <Button
+        android:id="@+id/btnNhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="15dp"
+        android:text="*"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSo2" />
+
+    <Button
+        android:id="@+id/btnChia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="15dp"
+        android:text="/"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSo2" />
+
+    <TextView
+        android:id="@+id/textKetqua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết quả"
+        android:textColor="#050000"
+        android:textSize="21dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChia"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/edtKetqua"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Kết quả..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textKetqua"
+        app:layout_constraintTop_toTopOf="@+id/textKetqua"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

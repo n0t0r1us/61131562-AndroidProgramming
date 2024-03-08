@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
 //    };
     //------------------------------------------------
     void TimView(){
-        edtSoA =(EditText) findViewById(R.id.edtSoA);
-        edtSoB =(EditText) findViewById(R.id.edtSoB);
+        edtSoA =(EditText) findViewById(R.id.edtSo1);
+        edtSoB =(EditText) findViewById(R.id.edtSo2);
         btnCong = (Button) findViewById(R.id.btnCong);
         btnTru = (Button) findViewById(R.id.btnTru);
         btnNhan = (Button) findViewById(R.id.btnNhan);
         btnChia = (Button) findViewById(R.id.btnChia);
-        tvKetQua = (TextView) findViewById(R.id.edtKQ);
+        tvKetQua = (TextView) findViewById(R.id.edtKetqua);
     }
     // Khai báo các đối tượng tương ứng với các điều khiển (view) cần thao tác
     EditText edtSoA, edtSoB;
