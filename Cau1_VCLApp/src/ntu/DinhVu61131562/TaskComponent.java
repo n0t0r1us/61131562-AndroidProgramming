@@ -1,11 +1,14 @@
 package ntu.DinhVu61131562;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
-public class TaskComponent extends JPanel {
+public class TaskComponent extends JPanel implements ActionListener {
 
 	private JCheckBox checkBox;
 	private JTextPane taskField;
@@ -29,15 +32,31 @@ public class TaskComponent extends JPanel {
 		
 		checkBox = new JCheckBox();
 		checkBox.setPreferredSize(CommonConfigs.CHECKBOX_SIZE);
+		checkBox.addActionListener(this);
 		
 		deleteButton = new JButton("X");
 		deleteButton.setPreferredSize(CommonConfigs.DELETE_BUTTON_SIZE);
 		
-		
-		add(taskField);
 		add(checkBox);
+		add(taskField);
 		add(deleteButton);
 
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(checkBox.isSelected()) {
+			String taskText = taskField.getText().replaceAll("<[^>]*>","");
+			taskField.setText("<html><s>" + taskText + "</s></html>");
+			
+		}else if (!checkBox.isSelected()) {
+			String taskText = taskField.getText().replaceAll("<[^>]*>","");
+			taskField.setText(taskText);
+			
+		}
+		
 	}
 
 }
