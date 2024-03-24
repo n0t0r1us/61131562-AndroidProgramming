@@ -1,6 +1,7 @@
 package ntu.DinhVu61131562;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -52,10 +53,12 @@ public class TaskComponent extends JPanel implements ActionListener {
 		
 		checkBox = new JCheckBox();
 		checkBox.setPreferredSize(CommonConfigs.CHECKBOX_SIZE);
+		checkBox.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		checkBox.addActionListener(this);
 		
 		deleteButton = new JButton("X");
 		deleteButton.setPreferredSize(CommonConfigs.DELETE_BUTTON_SIZE);
+		deleteButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		deleteButton.addActionListener(this);
 		
 		add(checkBox);

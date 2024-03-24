@@ -1,5 +1,6 @@
 package ntu.DinhVu61131562;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,6 +62,7 @@ public class VCLGui extends JFrame implements ActionListener {
 		
 		JButton addTaskButton =  new JButton("Thêm Việc");
 		addTaskButton.setFont(createFont("resources/ComicHelvetic-Light.ttf",18f));
+		addTaskButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		addTaskButton.setBounds(-5, CommonConfigs.GUI_SIZE.height - 88, 
 				CommonConfigs.ADDTASKBUTTON_SIZE.width, CommonConfigs.ADDTASKBUTTON_SIZE.height);	
 		addTaskButton.addActionListener(this);
