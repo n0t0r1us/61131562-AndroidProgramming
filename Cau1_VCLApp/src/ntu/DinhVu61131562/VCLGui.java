@@ -1,6 +1,7 @@
 package ntu.DinhVu61131562;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,8 +47,13 @@ public class VCLGui extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
+		JButton addTaskButton =  new JButton("Thêm Việc");
+		addTaskButton.setBounds(-5, CommonConfigs.GUI_SIZE.height - 88, 
+				CommonConfigs.ADDTASKBUTTON_SIZE.width, CommonConfigs.ADDTASKBUTTON_SIZE.height);	
+		
 		this.getContentPane().add(bannerLabel);
 		this.getContentPane().add(scrollPane);
+		this.getContentPane().add(addTaskButton);
 		
 	}
 	
