@@ -28,5 +28,8 @@ public class VCLGui extends JFrame {
 				CommonConfigs.BANNER_SIZE.width,
 				CommonConfigs.BANNER_SIZE.height);
 		
+		this.getContentPane().add(bannerLabel);
+		
 	}
+	
 }
