@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class VCLGui extends JFrame implements ActionListener {
@@ -52,6 +53,9 @@ public class VCLGui extends JFrame implements ActionListener {
 		scrollPane.setMaximumSize(CommonConfigs.TASKPANEL_SIZE);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+		verticalScrollBar.setUnitIncrement(20);
 		
 		JButton addTaskButton =  new JButton("Thêm Việc");
 		addTaskButton.setBounds(-5, CommonConfigs.GUI_SIZE.height - 88, 
