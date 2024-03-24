@@ -99,6 +99,13 @@ public class VCLGui extends JFrame implements ActionListener {
 			TaskComponent taskComponent = new TaskComponent(taskComponentPanel);
 			taskComponentPanel.add(taskComponent);
 			
+			if(taskComponentPanel.getComponentCount() > 1) {
+				TaskComponent previousTask = (TaskComponent) taskComponentPanel.getComponent(
+						taskComponentPanel.getComponentCount() - 2);
+				previousTask.getTaskField().setBackground(null);
+						
+			}
+			
 			taskComponent.getTaskField().requestFocus();
 			repaint();
 			revalidate();

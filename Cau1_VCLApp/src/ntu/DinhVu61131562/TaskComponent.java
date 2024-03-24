@@ -1,8 +1,10 @@
 package ntu.DinhVu61131562;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -27,6 +29,7 @@ public class TaskComponent extends JPanel implements ActionListener {
 		this.parentPanel = parentPanel;
 		
 		taskField = new JTextPane();
+		taskField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		taskField.setPreferredSize(CommonConfigs.TASKFIELD_SIZE);
 		taskField.setContentType("text/html");
 		
