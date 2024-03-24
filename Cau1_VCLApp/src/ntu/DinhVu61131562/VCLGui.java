@@ -1,5 +1,8 @@
 package ntu.DinhVu61131562;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class VCLGui extends JFrame {
+public class VCLGui extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
@@ -50,10 +53,17 @@ public class VCLGui extends JFrame {
 		JButton addTaskButton =  new JButton("Thêm Việc");
 		addTaskButton.setBounds(-5, CommonConfigs.GUI_SIZE.height - 88, 
 				CommonConfigs.ADDTASKBUTTON_SIZE.width, CommonConfigs.ADDTASKBUTTON_SIZE.height);	
+		addTaskButton.addActionListener(this);
 		
 		this.getContentPane().add(bannerLabel);
 		this.getContentPane().add(scrollPane);
 		this.getContentPane().add(addTaskButton);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
