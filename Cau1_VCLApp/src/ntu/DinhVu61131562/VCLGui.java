@@ -4,6 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class VCLGui extends JFrame {
 	/**
@@ -39,7 +40,14 @@ public class VCLGui extends JFrame {
 		taskComponentPanel.setLayout(new BoxLayout(taskComponentPanel, BoxLayout.Y_AXIS));
 		taskPanel.add(taskComponentPanel);
 		
+		JScrollPane scrollPane = new JScrollPane(taskPanel);
+		scrollPane.setBounds(8, 70, CommonConfigs.TASKPANEL_SIZE.width, CommonConfigs.TASKPANEL_SIZE.height);
+		scrollPane.setMaximumSize(CommonConfigs.TASKPANEL_SIZE);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		
 		this.getContentPane().add(bannerLabel);
+		this.getContentPane().add(scrollPane);
 		
 	}
 	
