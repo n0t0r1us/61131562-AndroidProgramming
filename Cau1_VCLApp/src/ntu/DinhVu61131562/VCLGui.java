@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,6 +51,7 @@ public class VCLGui extends JFrame implements ActionListener {
 		
 		JScrollPane scrollPane = new JScrollPane(taskPanel);
 		scrollPane.setBounds(8, 70, CommonConfigs.TASKPANEL_SIZE.width, CommonConfigs.TASKPANEL_SIZE.height);
+		scrollPane.setBorder(BorderFactory.createLoweredBevelBorder());
 		scrollPane.setMaximumSize(CommonConfigs.TASKPANEL_SIZE);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
