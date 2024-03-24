@@ -3,6 +3,8 @@ package ntu.DinhVu61131562;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -32,6 +34,21 @@ public class TaskComponent extends JPanel implements ActionListener {
 		taskField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		taskField.setPreferredSize(CommonConfigs.TASKFIELD_SIZE);
 		taskField.setContentType("text/html");
+		taskField.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				taskField.setBackground(null);
+				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				taskField.setBackground(Color.WHITE);
+			}
+		});
 		
 		checkBox = new JCheckBox();
 		checkBox.setPreferredSize(CommonConfigs.CHECKBOX_SIZE);
