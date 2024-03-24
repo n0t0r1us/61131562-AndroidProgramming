@@ -64,6 +64,15 @@ public class VCLGui extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		String command = e.getActionCommand();
+		if(command.equalsIgnoreCase("Thêm Việc")) {
+			TaskComponent taskComponent = new TaskComponent(taskComponentPanel);
+			taskComponentPanel.add(taskComponent);
+			
+			taskComponent.getTaskField().requestFocus();
+			repaint();
+			revalidate();
+		}
 		
 	}
 	

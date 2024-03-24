@@ -11,6 +11,11 @@ public class TaskComponent extends JPanel {
 	private JTextPane taskField;
 	private JButton deleteButton;
 	private JPanel parentPanel;
+	
+	public JTextPane getTaskField() {
+		return taskField;
+	}
+
 
 	/**
 	 * Create the panel.
