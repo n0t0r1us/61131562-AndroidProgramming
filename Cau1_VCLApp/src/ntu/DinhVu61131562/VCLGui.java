@@ -1,7 +1,9 @@
 package ntu.DinhVu61131562;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -32,6 +34,7 @@ public class VCLGui extends JFrame implements ActionListener {
 	
 	private void addGuiComponents() {
 		JLabel bannerLabel = new JLabel("DANH SÁCH CÁC VIỆC CẦN LÀM");
+		bannerLabel.setFont(createFont("resources/ComicHelvetic-Light.ttf",26f));
 		bannerLabel.setBounds(
 				(CommonConfigs.GUI_SIZE.width - bannerLabel.getPreferredSize().width)/2,
 					15,
@@ -59,6 +62,26 @@ public class VCLGui extends JFrame implements ActionListener {
 		this.getContentPane().add(scrollPane);
 		this.getContentPane().add(addTaskButton);
 		
+	}
+
+	private Font createFont(String resources, float size) {
+		// TODO Auto-generated method stub
+		String filePath = getClass().getClassLoader().getResource(resources).getPath();
+		if(filePath.contains("%20")) {
+			filePath = getClass().getClassLoader().getResource(resources).getPath()
+					.replace("%20", " ");
+		}
+		
+		try {
+			File customFontFile = new File(filePath);
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, customFontFile).deriveFont(size);
+			return customFont;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Lỗi: " + e);
+		}
+		
+		return null;
 	}
 
 	@Override
