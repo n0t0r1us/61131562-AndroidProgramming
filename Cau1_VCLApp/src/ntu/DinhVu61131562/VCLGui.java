@@ -60,6 +60,7 @@ public class VCLGui extends JFrame implements ActionListener {
 		verticalScrollBar.setUnitIncrement(20);
 		
 		JButton addTaskButton =  new JButton("Thêm Việc");
+		addTaskButton.setFont(createFont("resources/ComicHelvetic-Light.ttf",18f));
 		addTaskButton.setBounds(-5, CommonConfigs.GUI_SIZE.height - 88, 
 				CommonConfigs.ADDTASKBUTTON_SIZE.width, CommonConfigs.ADDTASKBUTTON_SIZE.height);	
 		addTaskButton.addActionListener(this);
