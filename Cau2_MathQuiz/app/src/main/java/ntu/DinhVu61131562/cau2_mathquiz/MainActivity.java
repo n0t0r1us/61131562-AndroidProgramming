@@ -91,4 +91,22 @@ public class MainActivity extends AppCompatActivity {
         cauHoiTextView.setText(num1 + " " + operator + " " + num2 + " = ?");
 
     }
+    private int calculate(int num1, int num2, char operator){
+        int result = 0;
+        switch (operator){
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case 'x':
+                result = num1 * num2;
+                break;
+            case '÷':
+                result = num1 / num2;
+                break;
+        }
+        return result;
+    }
 }
