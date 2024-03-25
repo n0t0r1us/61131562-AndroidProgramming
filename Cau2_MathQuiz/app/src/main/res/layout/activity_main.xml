@@ -61,4 +61,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameApp" />
 
+    <Button
+        android:id="@+id/dapAn1Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button_1"
+        android:text="Đáp án 1"
+        android:textColor="#F4F1F1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cauHoiTextView" />
+
+    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
