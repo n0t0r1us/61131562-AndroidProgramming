@@ -3,6 +3,7 @@ package ntu.DinhVu61131562.cau2_mathquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,6 +28,38 @@ public class MainActivity extends AppCompatActivity {
         dapAn4Button = findViewById(R.id.dapAn4Button);
         ketQuaTextView = findViewById(R.id.ketQuaTextView);
         doiCauHoiButton = findViewById(R.id.doiCauHoiButton);
+
+        showNextQuestion();
+
+        dapAn1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dapAn2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dapAn3Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dapAn4Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
+
+
+    }
+    private void showNextQuestion(){
 
     }
 }
