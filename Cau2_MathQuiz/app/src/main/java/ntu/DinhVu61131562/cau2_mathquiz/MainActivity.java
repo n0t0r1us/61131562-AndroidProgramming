@@ -59,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 checkAnswer(dapAn3Button.getText().toString());
             }
         });
-
-
-
     }
     private void showNextQuestion(){
         Random random = new Random();
@@ -152,5 +149,11 @@ public class MainActivity extends AppCompatActivity {
             dapAn3Button.setEnabled(false);
             dapAn4Button.setEnabled(false);
         }
+    }
+    private int calculateAnswer(){
+        int num1 = Integer.parseInt(cauHoiTextView.getText().toString().split(" ")[0]);
+        char operator = cauHoiTextView.getText().toString().split(" ")[1].charAt(0);
+        int num2 = Integer.parseInt(cauHoiTextView.getText().toString().split(" ")[2]);
+        return calculate(num1, num2, operator);
     }
 }
