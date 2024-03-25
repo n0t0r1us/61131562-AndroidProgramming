@@ -19,7 +19,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logo"
             android:layout_width="100dp"
             android:layout_height="89dp"
             android:layout_marginTop="6dp"
@@ -146,16 +146,23 @@
         app:layout_constraintTop_toBottomOf="@+id/dapAn3Button"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/doiCauHoiButton"
-        android:layout_width="69dp"
-        android:layout_height="69dp"
+        android:layout_width="71dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toEndOf="@+id/ketQuaTextView"
         app:layout_constraintTop_toBottomOf="@+id/dapAn4Button"
-        app:layout_constraintVertical_bias="0.24000001"
+        app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@mipmap/change" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
