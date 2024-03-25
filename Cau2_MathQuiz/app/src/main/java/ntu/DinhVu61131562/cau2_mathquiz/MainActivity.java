@@ -59,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 checkAnswer(dapAn3Button.getText().toString());
             }
         });
+        doiCauHoiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNextQuestion();
+            }
+        });
     }
     private void showNextQuestion(){
         Random random = new Random();
@@ -92,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
         int[] options = generateOptions(ketQuaDung);
 
         dapAn1Button.setText(String.valueOf(options[0]));
-        dapAn2Button.setText(String.valueOf(options[0]));
-        dapAn3Button.setText(String.valueOf(options[0]));
-        dapAn4Button.setText(String.valueOf(options[0]));
+        dapAn2Button.setText(String.valueOf(options[1]));
+        dapAn3Button.setText(String.valueOf(options[2]));
+        dapAn4Button.setText(String.valueOf(options[3]));
 
     }
     private int calculate(int num1, int num2, char operator){
