@@ -35,7 +35,7 @@
         android:id="@+id/nameApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:text="WELCOME TO MATHQUIZ!!!"
         android:textColor="#F4F2F2"
         android:textSize="24sp"
@@ -64,13 +64,15 @@
 
     <Button
         android:id="@+id/dapAn1Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="96dp"
+        android:layout_height="85dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_1"
+        android:drawableTop="@android:drawable/btn_star_big_on"
         android:gravity="center"
         android:text="Đáp án 1"
+
         android:textColor="#F4F1F1"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -79,11 +81,12 @@
 
     <Button
         android:id="@+id/dapAn2Button"
-        android:layout_width="85dp"
-        android:layout_height="80dp"
+        android:layout_width="96dp"
+        android:layout_height="90dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_2"
+        android:drawableTop="@android:drawable/star_big_on"
         android:gravity="center"
         android:text="Đáp án 2"
         android:textColor="#290202"
@@ -96,11 +99,12 @@
 
     <Button
         android:id="@+id/dapAn3Button"
-        android:layout_width="85dp"
-        android:layout_height="80dp"
+        android:layout_width="96dp"
+        android:layout_height="90dp"
         android:layout_marginStart="73dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/button_3"
+        android:drawableTop="@android:drawable/star_big_on"
         android:gravity="center"
         android:text="Đáp án 3"
         android:textSize="16sp"
@@ -110,11 +114,12 @@
 
     <Button
         android:id="@+id/dapAn4Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="96dp"
+        android:layout_height="84dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="43dp"
         android:background="@drawable/button_4"
+        android:drawableTop="@android:drawable/btn_star_big_on"
         android:gravity="center"
         android:text="Đáp án 4"
         android:textColor="#F1EDED"
@@ -124,5 +129,21 @@
         app:layout_constraintHorizontal_bias="0.646"
         app:layout_constraintStart_toEndOf="@+id/dapAn3Button"
         app:layout_constraintTop_toBottomOf="@+id/dapAn2Button" />
+
+    <TextView
+        android:id="@+id/ketQuaTextView"
+        android:layout_width="100dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ketqua_square"
+        android:gravity="center"
+        android:text="KẾT QUẢ: 0/10"
+        android:textColor="#FAF6F6"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dapAn3Button"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
