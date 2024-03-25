@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -36,25 +37,26 @@ public class MainActivity extends AppCompatActivity {
         dapAn1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                checkAnswer(dapAn1Button.getText().toString());
             }
         });
         dapAn2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkAnswer(dapAn2Button.getText().toString());
 
             }
         });
         dapAn3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                checkAnswer(dapAn3Button.getText().toString());
             }
         });
         dapAn4Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                checkAnswer(dapAn3Button.getText().toString());
             }
         });
 
@@ -86,9 +88,16 @@ public class MainActivity extends AppCompatActivity {
                 operator = '+';
                 break;
         }
-
+        int ketQuaDung = calculate(num1, num2, operator);
 
         cauHoiTextView.setText(num1 + " " + operator + " " + num2 + " = ?");
+
+        int[] options = generateOptions(ketQuaDung);
+
+        dapAn1Button.setText(String.valueOf(options[0]));
+        dapAn2Button.setText(String.valueOf(options[0]));
+        dapAn3Button.setText(String.valueOf(options[0]));
+        dapAn4Button.setText(String.valueOf(options[0]));
 
     }
     private int calculate(int num1, int num2, char operator){
@@ -109,17 +118,39 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
-    private int[] generateOptions(int correctAnswer){
+    private int[] generateOptions(int ketQuaDung){
         Random random = new Random();
         int[] options = new int[4];
 
-        options[random.nextInt(4)]= correctAnswer;
+        options[random.nextInt(4)]= ketQuaDung;
 
         for (int i = 0 ; i < 4; i++){
             if (options[i] == 0){
-                options[i] = correctAnswer + random.nextInt(20) - 10;
+                options[i] = ketQuaDung + random.nextInt(20) - 10;
             }
         }
         return options;
+    }
+    private void checkAnswer(String selectedOptions){
+        int selectedAnswer = Integer.parseInt(selectedOptions);
+        if(selectedAnswer == calculateAnswer()){
+            soCauDung++;
+            Toast.makeText(this, "Đúng!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Sai!", Toast.LENGTH_SHORT).show();
+        }
+        tongSoCauHoi++;
+
+        ketQuaTextView.setText("Kết quả: " + soCauDung + "/" + tongSoCauHoi);
+
+        if(tongSoCauHoi < 10){
+            showNextQuestion();
+        } else {
+            Toast.makeText(this, "Game Over!", Toast.LENGTH_SHORT).show();
+            dapAn1Button.setEnabled(false);
+            dapAn2Button.setEnabled(false);
+            dapAn3Button.setEnabled(false);
+            dapAn4Button.setEnabled(false);
+        }
     }
 }
