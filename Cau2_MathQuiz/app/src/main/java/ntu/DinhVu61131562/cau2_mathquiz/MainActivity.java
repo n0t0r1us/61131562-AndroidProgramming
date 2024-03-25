@@ -109,4 +109,17 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
+    private int[] generateOptions(int correctAnswer){
+        Random random = new Random();
+        int[] options = new int[4];
+
+        options[random.nextInt(4)]= correctAnswer;
+
+        for (int i = 0 ; i < 4; i++){
+            if (options[i] == 0){
+                options[i] = correctAnswer + random.nextInt(20) - 10;
+            }
+        }
+        return options;
+    }
 }
