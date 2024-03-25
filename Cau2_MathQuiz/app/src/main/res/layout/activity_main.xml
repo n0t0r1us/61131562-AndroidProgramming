@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="169dp"
+        android:layout_height="100dp"
         android:background="@drawable/header_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +20,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="142dp"
-            android:layout_height="148dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="100dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +35,7 @@
         android:id="@+id/nameApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text="WELCOME TO MATHQUIZ!!!"
         android:textColor="#F4F2F2"
         android:textSize="24sp"
@@ -145,5 +145,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dapAn3Button"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/doiCauHoiButton"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toEndOf="@+id/ketQuaTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dapAn4Button"
+        app:layout_constraintVertical_bias="0.24000001"
+        app:srcCompat="@mipmap/change" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
