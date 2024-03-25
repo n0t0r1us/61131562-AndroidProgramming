@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     private TextView cauHoiTextView;
     private TextView ketQuaTextView;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         dapAn4Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
@@ -60,6 +62,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void showNextQuestion(){
+        Random random = new Random();
+
+        int num1 = random.nextInt(20) +1;
+        int num2 = random.nextInt(20) +1;
+
+        char operator;
+        int operatorIndex = random.nextInt(4);
+        switch (operatorIndex){
+            case 0:
+                operator = '+';
+                break;
+            case 1:
+                operator = '-';
+                break;
+            case 2:
+                operator = 'x';
+                break;
+            case 3:
+                operator = '÷';
+                break;
+            default:
+                operator = '+';
+                break;
+        }
+
+
+        cauHoiTextView.setText(num1 + " " + operator + " " + num2 + " = ?");
 
     }
 }
