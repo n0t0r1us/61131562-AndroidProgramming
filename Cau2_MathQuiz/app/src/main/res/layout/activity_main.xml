@@ -164,5 +164,21 @@
         app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@mipmap/change" />
 
+    <ImageButton
+        android:id="@+id/choiLaiButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="220dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/doiCauHoiButton"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/ketQuaTextView"
+        app:layout_constraintTop_toBottomOf="@+id/cauHoiTextView"
+        app:layout_constraintVertical_bias="0.069"
+        app:srcCompat="@mipmap/reset" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

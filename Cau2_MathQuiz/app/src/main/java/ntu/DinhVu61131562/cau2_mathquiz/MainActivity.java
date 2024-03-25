@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView cauHoiTextView;
     private TextView ketQuaTextView;
     private Button dapAn1Button, dapAn2Button, dapAn3Button, dapAn4Button;
-    private ImageButton doiCauHoiButton;
+    private ImageButton doiCauHoiButton, choiLaiButton;
     private int soCauDung = 0;
     private int tongSoCauHoi = 0;
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         dapAn4Button = findViewById(R.id.dapAn4Button);
         ketQuaTextView = findViewById(R.id.ketQuaTextView);
         doiCauHoiButton = findViewById(R.id.doiCauHoiButton);
+        choiLaiButton = findViewById(R.id.choiLaiButton);
 
         showNextQuestion();
 
@@ -63,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showNextQuestion();
+            }
+        });
+        choiLaiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restartGame();
             }
         });
     }
@@ -161,5 +168,15 @@ public class MainActivity extends AppCompatActivity {
         char operator = cauHoiTextView.getText().toString().split(" ")[1].charAt(0);
         int num2 = Integer.parseInt(cauHoiTextView.getText().toString().split(" ")[2]);
         return calculate(num1, num2, operator);
+    }
+    private void restartGame(){
+        soCauDung = 0;
+        tongSoCauHoi = 0;
+        ketQuaTextView.setText("Kết quả: " + soCauDung + "/" + tongSoCauHoi);
+        dapAn1Button.setEnabled(true);
+        dapAn2Button.setEnabled(true);
+        dapAn3Button.setEnabled(true);
+        dapAn4Button.setEnabled(true);
+        showNextQuestion();
     }
 }
