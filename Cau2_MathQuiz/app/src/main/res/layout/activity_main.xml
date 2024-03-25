@@ -59,7 +59,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameApp" />
+        app:layout_constraintTop_toBottomOf="@+id/nameApp"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/dapAn1Button"
@@ -68,6 +69,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_1"
+        android:gravity="center"
         android:text="Đáp án 1"
         android:textColor="#F4F1F1"
         android:textSize="16sp"
@@ -77,11 +79,12 @@
 
     <Button
         android:id="@+id/dapAn2Button"
-        android:layout_width="80dp"
+        android:layout_width="85dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_2"
+        android:gravity="center"
         android:text="Đáp án 2"
         android:textColor="#290202"
         android:textSize="16sp"
@@ -90,6 +93,20 @@
         app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toEndOf="@+id/dapAn1Button"
         app:layout_constraintTop_toBottomOf="@+id/cauHoiTextView" />
+
+    <Button
+        android:id="@+id/dapAn3Button"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button_3"
+        android:gravity="center"
+        android:text="Đáp án 3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dapAn1Button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
