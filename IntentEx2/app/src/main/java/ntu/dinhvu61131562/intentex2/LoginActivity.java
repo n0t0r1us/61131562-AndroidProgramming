@@ -33,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if( tenDN.equals("dinhdu")&& mk.equals("6969") &&isValidEmail ){
                     Intent iQuiz = new Intent(LoginActivity.this, HomeActivity.class);
-                    iQuiz.putExtra("ten_dang_nhap", tenDN);
-                    iQuiz.putExtra("mk",mk);
+                    iQuiz.putExtra("user_name", tenDN);
+                    iQuiz.putExtra("pass",mk);
                     iQuiz.putExtra("email", email);
                     startActivity(iQuiz);
                 }
