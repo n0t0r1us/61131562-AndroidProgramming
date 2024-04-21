@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         loadFragment(new HomeFragment(), true);
 
 
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
