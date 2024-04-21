@@ -34,7 +34,7 @@ import java.util.List;
 
 public class ShopFragment extends Fragment {
     private static final String TAG = ShopFragment.class.getSimpleName();
-    private static final String URL = "https://run.mocky.io/v3/a2abf5b3-ed09-4469-9b54-262fe7913fda";
+    private static final String URL = "http://run.mocky.io/v3/9e2d5f5b-602c-4c3c-84e1-09ab8e910dfc";
     private RecyclerView recyclerView;
     private List<Game> gameList;
     private ShopAdapter gAdapter;
