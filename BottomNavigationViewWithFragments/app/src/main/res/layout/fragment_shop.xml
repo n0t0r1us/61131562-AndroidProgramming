@@ -4,14 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShopFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="Shop Fragment" />
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="#111"
+            android:text="New Release Games" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+
 
 </FrameLayout>
