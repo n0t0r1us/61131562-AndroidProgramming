@@ -2,6 +2,7 @@ package ntu.dinhvu61131562.bottomnavigationviewwithfragments;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,18 +27,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
-                if (itemId == R.id.navHome){
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(R.id.frameLayout, new HomeFragment());
-                    fragmentTransaction.commit();
-                }else if(itemId == R.id.navShop){
+                if (itemId == R.id.navHome) {
+                    loadFragment(new HomeFragment());
+                } else if (itemId == R.id.navShop) {
+                    loadFragment(new ShopFragment());
 
-                }else { // nav Profile
-
+                } else { // nav Profile
+                    loadFragment(new ProfileFragment());
                 }
                 return false;
             }
         });
+
+    }
+    private void loadFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
     }
 }
