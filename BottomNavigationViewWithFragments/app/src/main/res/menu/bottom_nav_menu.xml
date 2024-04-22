@@ -5,8 +5,8 @@
         android:id="@+id/navHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/home"
-        android:title="Home" />
+        android:icon="@drawable/calculate"
+        android:title="Calculator" />
     <item
         android:id="@+id/navShop"
         android:layout_width="wrap_content"

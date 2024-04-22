@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MathFragment">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="CALCULATOR" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+    <TextView
+        android:id="@+id/tvSo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số 1: "
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"/>
+        <EditText
+        android:id="@+id/etSo1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" android:enabled="false"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:id="@+id/tvSo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số 2: "
+            android:textSize="20sp"
+            android:layout_marginEnd="8dp"/>
+        <EditText
+            android:id="@+id/etSo2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:id="@+id/tvKQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kết quả: "
+            android:textSize="20sp"
+            android:layout_marginEnd="8dp"/>
+        <EditText
+            android:id="@+id/etKQ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/genButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tạo dữ liệu"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginBottom="16dp"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_gravity="bottom">
+
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/add"
+            android:contentDescription="Cộng"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:layout_columnWeight="1"/>
+
+        <ImageButton
+            android:id="@+id/subtractButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sub"
+            android:contentDescription="Trừ"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:layout_columnWeight="1"/>
+
+        <ImageButton
+            android:id="@+id/multiplyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/multi"
+            android:contentDescription="Nhân"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:layout_columnWeight="1"/>
+
+        <ImageButton
+            android:id="@+id/divideButton"
+            android:layout_width="0dp"
+            android:layout_height="172dp"
+            android:layout_columnWeight="1"
+            android:background="@null"
+            android:contentDescription="Chia"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/div" />
+    </GridLayout>
+
+</LinearLayout>
+
+
+</FrameLayout>

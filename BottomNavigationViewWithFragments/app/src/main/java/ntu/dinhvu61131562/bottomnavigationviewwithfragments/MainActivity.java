@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNavView);
         frameLayout = findViewById(R.id.frameLayout);
-        loadFragment(new HomeFragment(), true);
+        loadFragment(new MathFragment(), true);
 
 
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.navHome) {
-                    loadFragment(new HomeFragment(), false);
+                    loadFragment(new MathFragment(), false);
                 } else if (itemId == R.id.navShop) {
                     loadFragment(new ShopFragment(), false);
 
