@@ -91,8 +91,8 @@
 
         <ImageButton
             android:id="@+id/addButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
             android:src="@mipmap/add"
             android:contentDescription="Cộng"
             android:background="@null"
@@ -101,8 +101,8 @@
 
         <ImageButton
             android:id="@+id/subtractButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
             android:src="@mipmap/sub"
             android:contentDescription="Trừ"
             android:background="@null"
@@ -111,8 +111,8 @@
 
         <ImageButton
             android:id="@+id/multiplyButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
             android:src="@mipmap/multi"
             android:contentDescription="Nhân"
             android:background="@null"
@@ -121,8 +121,8 @@
 
         <ImageButton
             android:id="@+id/divideButton"
-            android:layout_width="0dp"
-            android:layout_height="172dp"
+            android:layout_width="10dp"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
             android:background="@null"
             android:contentDescription="Chia"
