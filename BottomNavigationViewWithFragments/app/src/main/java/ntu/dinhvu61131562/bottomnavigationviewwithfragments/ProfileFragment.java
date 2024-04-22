@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.io.File;
 
 public class ProfileFragment extends Fragment {
     @Override
@@ -27,19 +30,18 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         return rootView;
     }
-    private void openPdfFile(){
-        try{
-            String pdfFilePath = "file:///android_asset/CV.pdf";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.parse(pdfFilePath), "application/pdf");
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            if(intent.resolveActivity(requireActivity().getPackageManager()) != null){
-                startActivity(intent);
-            } else {
 
-            }
-        }catch (ActivityNotFoundException e){
-            e.printStackTrace();
+    private void openPdfFile() {
+
+        String pdfPath = "./app/CV.pdf";
+        File file = new File(requireContext().getFilesDir(), pdfPath);
+        Uri pdfUri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".fileprovider", file);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(pdfUri, "application/pdf");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
         }
     }
 }
