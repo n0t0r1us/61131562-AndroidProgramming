@@ -73,6 +73,15 @@ public class MathFragment extends Fragment {
                 etKQ.setText(String.valueOf(kQ));
             }
         });
+        divButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int s1 = Integer.parseInt(etSo1.getText().toString());
+                int s2 = Integer.parseInt(etSo2.getText().toString());
+                double kQ = (double) s1 / s2;
+                etKQ.setText(String.valueOf(kQ));
+            }
+        });
 
         return rootView;
 
