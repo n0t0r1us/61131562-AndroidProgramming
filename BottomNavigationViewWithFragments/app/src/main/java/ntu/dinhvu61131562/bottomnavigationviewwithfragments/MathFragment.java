@@ -14,9 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MathFragment extends Fragment {
     private TextView tvSo1, tvSo2, tvKQ;
-    private EditText edSo1, edSo2, edKQ;
+    private EditText etSo1, etSo2, etKQ;
     private Button genButton;
     private ImageButton addButton, subButton, multiButton, divButton;
     @Override
@@ -25,16 +27,27 @@ public class MathFragment extends Fragment {
         tvSo1 = rootView.findViewById(R.id.tvSo1);
         tvSo2 = rootView.findViewById(R.id.tvSo2);
         tvKQ = rootView.findViewById(R.id.tvKQ);
-        edSo1 = rootView.findViewById(R.id.etSo1);
-        edSo2 = rootView.findViewById(R.id.etSo2);
-        edKQ = rootView.findViewById(R.id.etKQ);
+        etSo1 = rootView.findViewById(R.id.etSo1);
+        etSo2 = rootView.findViewById(R.id.etSo2);
+        etKQ = rootView.findViewById(R.id.etKQ);
         genButton = rootView.findViewById(R.id.genButton);
         addButton = rootView.findViewById(R.id.addButton);
         subButton = rootView.findViewById(R.id.subtractButton);
         multiButton = rootView.findViewById(R.id.multiplyButton);
         divButton = rootView.findViewById(R.id.divideButton);
 
-        return inflater.inflate(R.layout.fragment_math, container, false);
+        genButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random random = new Random();
+                int so1 = random.nextInt(10) +1;
+                int so2 = random.nextInt(10)+1;
+                etSo1.setText(String.valueOf(so1));
+                etSo2.setText(String.valueOf(so2));
+            }
+        });
+
+        return rootView;
 
     }
 }
