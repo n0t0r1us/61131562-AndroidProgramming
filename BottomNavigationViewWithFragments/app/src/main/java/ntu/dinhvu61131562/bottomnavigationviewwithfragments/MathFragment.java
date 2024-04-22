@@ -46,6 +46,33 @@ public class MathFragment extends Fragment {
                 etSo2.setText(String.valueOf(so2));
             }
         });
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int s1 = Integer.parseInt(etSo1.getText().toString());
+                int s2 = Integer.parseInt(etSo2.getText().toString());
+                int kQ = s1+s2;
+                etKQ.setText(String.valueOf(kQ));
+            }
+        });
+        subButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int s1 = Integer.parseInt(etSo1.getText().toString());
+                int s2 = Integer.parseInt(etSo2.getText().toString());
+                int kQ = s1-s2;
+                etKQ.setText(String.valueOf(kQ));
+            }
+        });
+        multiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int s1 = Integer.parseInt(etSo1.getText().toString());
+                int s2 = Integer.parseInt(etSo2.getText().toString());
+                int kQ = s1*s2;
+                etKQ.setText(String.valueOf(kQ));
+            }
+        });
 
         return rootView;
 
