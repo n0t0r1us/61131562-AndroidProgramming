@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.Manifest;
+import android.widget.TextView;
+
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -71,7 +76,35 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i<mySongs.size();i++){
             items[i] = mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
         }
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(myAdapter);
+        /*ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        listView.setAdapter(myAdapter);*/
+        customAdapter customAdapter = new customAdapter();
+        listView.setAdapter(customAdapter);
+    }
+    class customAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return items.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View myView = getLayoutInflater().inflate(R.layout.list_item, null);
+            TextView textSong = myView.findViewById(R.id.txtSongName);
+            textSong.setSelected(true);
+            textSong.setText(items[position]);
+            return myView;
+        }
     }
 }
