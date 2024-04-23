@@ -7,6 +7,7 @@ appcompat = "1.6.1"
 material = "1.11.0"
 constraintlayout = "2.1.4"
 dexter = "6.2.3"
+audiovisualizer = "2.2.7"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -16,6 +17,7 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 dexter = { group = "com.karumi", name = "dexter", version.ref = "dexter" }
+audiovisualizer = { group = "io.github.gautamchibde", name = "audiovisualizer", version.ref = "audiovisualizer" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -2,10 +2,12 @@ package ntu.dinhvu61131562.muzicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -80,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(myAdapter);*/
         customAdapter customAdapter = new customAdapter();
         listView.setAdapter(customAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String songName = (String) listView.getItemAtPosition(position);
+                startActivity(new Intent(getApplicationContext(), PlayerActivity.class)
+                        .putExtra("songs", mySongs)
+                        .putExtra("songname", songName)
+                        .putExtra("pos", position));
+            }
+        });
     }
     class customAdapter extends BaseAdapter{
 
