@@ -164,6 +164,10 @@ public class PlayerActivity extends AppCompatActivity {
         int audiosessionId = mediaPlayer.getAudioSessionId();
         if (audiosessionId != -1) {
             visualizer.setPlayer(mediaPlayer.getAudioSessionId());
+            visualizer.setColor(ContextCompat.getColor(this, R.color.purple));
+            visualizer.setDensity(65);
+            visualizer.setGap(2);
+
         }
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +187,7 @@ public class PlayerActivity extends AppCompatActivity {
                 int audiosessionId = mediaPlayer.getAudioSessionId();
                 if (audiosessionId != -1) {
                     visualizer.setPlayer(mediaPlayer.getAudioSessionId());
+
                 }
 
             }
@@ -203,6 +208,7 @@ public class PlayerActivity extends AppCompatActivity {
                 int audiosessionId = mediaPlayer.getAudioSessionId();
                 if (audiosessionId != -1) {
                     visualizer.setPlayer(mediaPlayer.getAudioSessionId());
+
                 }
             }
         });
