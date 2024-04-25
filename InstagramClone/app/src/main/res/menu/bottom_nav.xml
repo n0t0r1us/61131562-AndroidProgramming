@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_trangchu"
+        android:icon="@drawable/ic_home"
+        android:title=""/>
+    <item
+        android:id="@+id/nav_timkiem"
+        android:icon="@drawable/ic_search"
+        android:title=""/>
+    <item
+        android:id="@+id/nav_them"
+        android:icon="@drawable/ic_add"
+        android:title=""/>
+    <item
+        android:id="@+id/nav_tim"
+        android:icon="@drawable/ic_heart"
+        android:title=""/>
+    <item
+        android:id="@+id/nav_pro5"
+        android:icon="@drawable/ic_pro5"
+        android:title=""/>
+
+</menu>
