@@ -22,6 +22,8 @@
     <item
         android:title="Account">
         <menu>
+            <group
+                android:checkableBehavior="single">
             <item
             android:id="@+id/nav_pro5"
             android:icon="@drawable/nav_pro5"
@@ -30,9 +32,9 @@
                 android:id="@+id/nav_setting"
                 android:icon="@drawable/nav_setting"
                 android:title="Setting"/>
+            </group>
         </menu>
 
     </item>
-
 
 </menu>
