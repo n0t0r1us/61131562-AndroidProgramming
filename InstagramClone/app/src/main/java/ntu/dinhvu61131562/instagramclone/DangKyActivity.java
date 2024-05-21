@@ -36,29 +36,36 @@ public class DangKyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky);
+        //Ánh xạ các thành phần giao diện
         taiKhoan = findViewById(R.id.taiKhoan);
         hoTen = findViewById(R.id.hoTen);
         email = findViewById(R.id.email);
         matKhau = findViewById(R.id.matKhau);
         dangKy = findViewById(R.id.dangKy);
         txtDn = findViewById(R.id.txt_Dn);
+        // Khởi tạo FirebaseAuth
         auth = FirebaseAuth.getInstance();
+        // Thiết lập sự kiện click cho TextView chuyển đến màn hình đăng nhập
         txtDn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DangKyActivity.this, DangNhapActivity.class));
             }
         });
+        // Thiết lập sự kiện click cho nút đăng ký
         dangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Hiển thị ProgressDialog
                 pd = new ProgressDialog(DangKyActivity.this);
                 pd.setMessage("Vui lòng đợi...");
                 pd.show();
+                // Lấy giá trị từ các trường nhập liệu
                 String str_taiKhoan = taiKhoan.getText().toString();
                 String str_hoTen = hoTen.getText().toString();
                 String str_email = email.getText().toString();
                 String str_matKhau = matKhau.getText().toString();
+                // Kiểm tra các trường nhập liệu
                 if (TextUtils.isEmpty(str_taiKhoan) || TextUtils.isEmpty(str_hoTen)
                         || TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_matKhau)){
                     Toast.makeText(DangKyActivity.this, "Không được bỏ trống!",
@@ -82,13 +89,16 @@ public class DangKyActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             FirebaseUser firebaseUser = auth.getCurrentUser();
                             String taiKhoanId = firebaseUser.getUid();
+                            // Tham chiếu tới Firebase Realtime Database
                             reference = FirebaseDatabase.getInstance().getReference().child("Tài Khoản").child(taiKhoanId);
+                            // Tạo một HashMap để lưu thông tin người dùng
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", taiKhoanId);
                             hashMap.put("taiKhoan", taiKhoan.toLowerCase());
                             hashMap.put("hoTen", hoTen);
                             hashMap.put("bio", "");
                             hashMap.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/instagramclone-69696.appspot.com/o/placeholder.png?alt=media&token=b7d200f6-6f24-4a91-87a8-cd10fee1a194");
+                            // Lưu thông tin người dùng vào Firebase Realtime Database
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

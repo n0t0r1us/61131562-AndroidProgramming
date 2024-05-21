@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class StartActivity extends AppCompatActivity {
     Button dangNhap, dangKy;
-    FirebaseUser firebaseUser;
+    FirebaseUser firebaseUser;  
 
     @Override
     protected void onStart() {
@@ -29,14 +29,17 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        // Ánh xạ các thành phần giao diện
         dangNhap = findViewById(R.id.dangNhap);
         dangKy = findViewById(R.id.dangKy);
+        // Thiết lập sự kiện click cho nút đăng nhập
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StartActivity.this, DangNhapActivity.class));
             }
         });
+        // Thiết lập sự kiện click cho nút đăng ký
         dangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
