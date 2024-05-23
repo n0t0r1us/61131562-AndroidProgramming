@@ -27,7 +27,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationOnItemSelectedListener);
+
+        Bundle intent = getIntent().getExtras();
+        if (intent != null){
+            String nguoiDang = intent.getString("idNguoiDang");
+
+            SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+            editor.putString("profileId", nguoiDang);
+            editor.apply();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain,
+                    new ProfileFragment()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain,
+                    new TrangChuFragment()).commit();
+        }
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_contain,
                 new TrangChuFragment()).commit();
     }
