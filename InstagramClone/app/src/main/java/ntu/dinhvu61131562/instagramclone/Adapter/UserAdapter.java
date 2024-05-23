@@ -62,7 +62,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREPS",
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",
                         Context.MODE_PRIVATE).edit();
                 editor.putString("profileId", user.getId());
                 editor.apply();

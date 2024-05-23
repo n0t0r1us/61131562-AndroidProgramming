@@ -88,7 +88,7 @@
                                 android:id="@+id/posts"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -110,7 +110,7 @@
                                 android:id="@+id/nguoiTheoDoi"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -131,7 +131,7 @@
                                 android:id="@+id/dangTheoDoi"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -146,7 +146,6 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:id="@+id/edit_profile"
                         android:background="@drawable/btn_purple"/>
                 </LinearLayout>
