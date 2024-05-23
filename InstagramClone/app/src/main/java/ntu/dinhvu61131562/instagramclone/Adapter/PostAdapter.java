@@ -1,6 +1,7 @@
 package ntu.dinhvu61131562.instagramclone.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import ntu.dinhvu61131562.instagramclone.BinhLuanActivity;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 import ntu.dinhvu61131562.instagramclone.R;
@@ -61,6 +63,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         nguoiDangInfo(holder.image_profile, holder.taiKhoan, holder.nguoiDang, post.getNguoiDang());
         daThich(post.getPostId(), holder.like);
         nrLikes(holder.likes, post.getPostId());
+        getCmts(post.getPostId(), holder.cmts);
 
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +77,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                             .child(post.getPostId())
                             .child(firebaseUser.getUid()).removeValue();
                 }
+            }
+        });
+        holder.cmt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, BinhLuanActivity.class);
+                intent.putExtra("postId", post.getPostId());
+                intent.putExtra("idNguoiDang", post.getNguoiDang());
+                mContext.startActivity(intent);
+            }
+        });
+        holder.cmts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, BinhLuanActivity.class);
+                intent.putExtra("postId", post.getPostId());
+                intent.putExtra("idNguoiDang", post.getNguoiDang());
+                mContext.startActivity(intent);
             }
         });
 
@@ -102,6 +123,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             cmts = itemView.findViewById(R.id.cmts);
 
         }
+    }
+
+    private void getCmts(String postId, final TextView Cmts){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Cmts")
+                .child(postId);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Cmts.setText("Xem tất cả " +snapshot.getChildrenCount() + " bình luận");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
     private void daThich(String postId, ImageView imageView){
 
