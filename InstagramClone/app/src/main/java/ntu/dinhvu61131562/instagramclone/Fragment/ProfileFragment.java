@@ -42,6 +42,12 @@ public class ProfileFragment extends Fragment {
     TextView posts, nguoiTheoDoi, dangTheoDoi, hoTen, bio, taiKhoan;
     Button edit_profile;
 
+    private List<String> mySaves;
+
+    RecyclerView recyclerView_saves;
+    MyFotoAdapter myFotoAdapter_saves;
+    List<Post> postList_saves;
+
     RecyclerView recyclerView;
     MyFotoAdapter myFotoAdapter;
     List<Post> postList;
@@ -69,7 +75,7 @@ public class ProfileFragment extends Fragment {
         edit_profile = view.findViewById(R.id.edit_profile);
         myFotos = view.findViewById(R.id.myFotos);
         savedFotos = view.findViewById(R.id.savedFotos);
-
+        // Thiết lập RecyclerView cho bài đăng đã lưu
         recyclerView = view.findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 3);
@@ -78,10 +84,22 @@ public class ProfileFragment extends Fragment {
         myFotoAdapter = new MyFotoAdapter(getContext(), postList);
         recyclerView.setAdapter(myFotoAdapter);
 
+        recyclerView_saves = view.findViewById(R.id.recycle_view_save);
+        recyclerView_saves.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager_saves = new GridLayoutManager(getContext(), 3);
+        recyclerView_saves.setLayoutManager(linearLayoutManager_saves);
+        postList_saves = new ArrayList<>();
+        myFotoAdapter_saves = new MyFotoAdapter(getContext(), postList_saves);
+        recyclerView_saves.setAdapter(myFotoAdapter_saves);
+        // Hiển thị RecyclerView của bài đăng cá nhân
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView_saves.setVisibility(View.GONE);
+
         userInfo();
         getFollowers();
         getNrPosts();
         myFotos();
+        mySaves();
 
         if (profileId.equals(firebaseUser.getUid())){
             edit_profile.setText("Sửa Hồ Sơ");
@@ -113,6 +131,22 @@ public class ProfileFragment extends Fragment {
                             .child(firebaseUser.getUid()).removeValue();
 
                 }
+            }
+        });
+        // Chuyển đổi giữa hiển thị bài đăng cá nhân và bài đăng đã lưu
+        myFotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView_saves.setVisibility(View.GONE);
+            }
+        });
+
+        savedFotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.VISIBLE);
             }
         });
 
@@ -232,6 +266,51 @@ public class ProfileFragment extends Fragment {
                 }
                 Collections.reverse(postList);
                 myFotoAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    // Lấy danh sách bài đăng đã lưu
+    private void mySaves(){
+        mySaves = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Lưu")
+                .child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    mySaves.add(dataSnapshot.getKey());
+                }
+
+                readSaves();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    // Đọc bài đăng đã lưu từ Firebase
+    private void readSaves(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList_saves.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Post post = dataSnapshot.getValue(Post.class);
+
+                    for (String id : mySaves){
+                        if (post.getPostId().equals(id)){
+                            postList_saves.add(post);
+                        }
+                    }
+                }
             }
 
             @Override
