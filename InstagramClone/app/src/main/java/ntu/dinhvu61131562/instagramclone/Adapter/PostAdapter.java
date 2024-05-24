@@ -64,6 +64,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         daThich(post.getPostId(), holder.like);
         nrLikes(holder.likes, post.getPostId());
         getCmts(post.getPostId(), holder.cmts);
+        daLuu(post.getPostId(), holder.save);
+
+        // Thiết lập sự kiện lưu/huỷ lưu bài đăng
+        holder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.save.getTag().equals("Lưu")){
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("Lưu")
+                            .child(firebaseUser.getUid())
+                            .child(post.getPostId()).setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("Lưu")
+                            .child(firebaseUser.getUid())
+                            .child(post.getPostId()).removeValue();
+
+                }
+            }
+        });
 
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +218,30 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 Glide.with(mContext).load(user.getImageUrl()).into(image_profile);
                 taiKhoan.setText(user.getTaiKhoan());
                 nguoiDang.setText(user.getTaiKhoan());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    // Kiểm tra trạng thái lưu bài đăng
+    private void daLuu(String postId, ImageView imageView){
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Lưu")
+                .child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(postId).exists()){
+                    imageView.setImageResource(R.drawable.ic_save_black);
+                    imageView.setTag("Đã Lưu");
+                } else {
+                    imageView.setImageResource(R.drawable.ic_savee_black);
+                    imageView.setTag("Lưu");
+                }
             }
 
             @Override
