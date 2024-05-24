@@ -2,6 +2,7 @@ package ntu.dinhvu61131562.instagramclone.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 import ntu.dinhvu61131562.instagramclone.BinhLuanActivity;
+import ntu.dinhvu61131562.instagramclone.Fragment.PostDetailFragment;
+import ntu.dinhvu61131562.instagramclone.Fragment.ProfileFragment;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 import ntu.dinhvu61131562.instagramclone.R;
@@ -65,6 +69,57 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         nrLikes(holder.likes, post.getPostId());
         getCmts(post.getPostId(), holder.cmts);
         daLuu(post.getPostId(), holder.save);
+
+        holder.image_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",
+                                Context.MODE_PRIVATE).edit();
+                editor.putString("profileId", post.getNguoiDang());
+                editor.apply();
+
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_contain, new ProfileFragment()).commit();
+            }
+        });
+        holder.taiKhoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",
+                        Context.MODE_PRIVATE).edit();
+                editor.putString("profileId", post.getNguoiDang());
+                editor.apply();
+
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_contain, new ProfileFragment()).commit();
+            }
+        });
+
+        holder.nguoiDang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",
+                        Context.MODE_PRIVATE).edit();
+                editor.putString("profileId", post.getNguoiDang());
+                editor.apply();
+
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_contain, new ProfileFragment()).commit();
+            }
+        });
+
+        holder.post_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",
+                        Context.MODE_PRIVATE).edit();
+                editor.putString("postId", post.getPostId());
+                editor.apply();
+
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frag_contain, new PostDetailFragment()).commit();
+            }
+        });
 
         // Thiết lập sự kiện lưu/huỷ lưu bài đăng
         holder.save.setOnClickListener(new View.OnClickListener() {
