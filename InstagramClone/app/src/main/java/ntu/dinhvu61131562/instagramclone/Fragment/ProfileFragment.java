@@ -1,6 +1,7 @@
 package ntu.dinhvu61131562.instagramclone.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -34,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 
 import ntu.dinhvu61131562.instagramclone.Adapter.MyFotoAdapter;
+import ntu.dinhvu61131562.instagramclone.EditProfileActivity;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 import ntu.dinhvu61131562.instagramclone.R;
@@ -115,6 +117,7 @@ public class ProfileFragment extends Fragment {
 
                 if (btn.equals("Sửa Hồ Sơ")){
                     // đi đến EditProfile
+                    startActivity(new Intent(getContext(), EditProfileActivity.class));
                 } else if (btn.equals("Theo Dõi")){
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(firebaseUser.getUid()).child("Đang Theo Dõi")
