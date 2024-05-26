@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -83,6 +84,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(user.getId()).child("Người Theo Dõi")
                             .child(firebaseUser.getUid()).setValue(true);
+                    themThongBao(user.getId());
                 } else {
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(firebaseUser.getUid()).child("Đang Theo Dõi")
@@ -95,6 +97,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             }
         });
 
+    }
+    private void themThongBao(String userId){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Thông Báo")
+                .child(userId);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userId", firebaseUser.getUid());
+        hashMap.put("text", "đã theo dõi bạn");
+        hashMap.put("postId", "");
+        hashMap.put("daDang", false);
+
+        reference.push().setValue(hashMap);
     }
 
     @Override
