@@ -37,11 +37,13 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     ImageView close, image_profile;
+
     TextView save, tvChange;
     MaterialEditText hoTen, taiKhoan, bio;
 
@@ -119,11 +121,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 taiKhoan.getText().toString(),
                 bio.getText().toString());
             }
-
-
         });
-
     }
+
     private void uploadProfile(String hoTen, String taiKhoan, String bio) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tài Khoản")
                 .child(firebaseUser.getUid());
@@ -132,8 +132,9 @@ public class EditProfileActivity extends AppCompatActivity {
         hashMap.put("hoTen", hoTen);
         hashMap.put("taiKhoan", taiKhoan);
         hashMap.put("bio", bio);
-
         reference.updateChildren(hashMap);
+        Toast.makeText(EditProfileActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT)
+                .show();
     }
 
     private String getFileExtension(Uri uri){
@@ -174,6 +175,9 @@ public class EditProfileActivity extends AppCompatActivity {
                         hashMap.put("imageUrl", ""+myUrl);
 
                         reference.updateChildren(hashMap);
+
+                        Glide.with(EditProfileActivity.this).load(myUrl).into(image_profile);
+
                         pd.dismiss();
                     }else {
                         Toast.makeText(EditProfileActivity.this, "Thất bại!", Toast.LENGTH_SHORT)
@@ -192,10 +196,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
     }
-
     //crtl+o
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

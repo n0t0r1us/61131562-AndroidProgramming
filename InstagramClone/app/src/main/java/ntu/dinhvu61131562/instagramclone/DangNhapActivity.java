@@ -59,7 +59,8 @@ public class DangNhapActivity extends AppCompatActivity {
                 String str_matKhau = matKhau.getText().toString();
                 // Kiểm tra các trường nhập liệu
                 if(TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_matKhau)){
-                    Toast.makeText(DangNhapActivity.this, "Không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangNhapActivity.this, "Không được bỏ trống!",
+                            Toast.LENGTH_SHORT).show();
 
                 }else {
                     // Đăng nhập với FirebaseAuth
@@ -68,7 +69,8 @@ public class DangNhapActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()){
-                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                                        DatabaseReference reference = FirebaseDatabase.getInstance()
+                                                .getReference()
                                                 .child("Tài Khoản")
                                                 .child(auth.getCurrentUser().getUid());
                                         // Lắng nghe thay đổi trên DatabaseReference
@@ -90,7 +92,8 @@ public class DangNhapActivity extends AppCompatActivity {
                                         });
                                     }else {
                                         pd.dismiss();
-                                        Toast.makeText(DangNhapActivity.this,"Xác thực đã thất bại!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(DangNhapActivity.this,"Xác thực đã thất bại!",
+                                                Toast.LENGTH_SHORT).show();
 
                                     }
 

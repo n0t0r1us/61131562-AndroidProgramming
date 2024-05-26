@@ -90,7 +90,8 @@ public class DangKyActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser = auth.getCurrentUser();
                             String taiKhoanId = firebaseUser.getUid();
                             // Tham chiếu tới Firebase Realtime Database
-                            reference = FirebaseDatabase.getInstance().getReference().child("Tài Khoản").child(taiKhoanId);
+                            reference = FirebaseDatabase.getInstance().getReference()
+                                    .child("Tài Khoản").child(taiKhoanId);
                             // Tạo một HashMap để lưu thông tin người dùng
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", taiKhoanId);
@@ -112,7 +113,8 @@ public class DangKyActivity extends AppCompatActivity {
                             });
                         } else {
                             pd.dismiss();
-                            Toast.makeText(DangKyActivity.this, "Bạn không thể đăng ký bằng email hoặc mật khẩu này!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangKyActivity.this, "Bạn không thể đăng ký bằng email hoặc mật khẩu này!",
+                                    Toast.LENGTH_SHORT).show();
 
                         }
                     }
