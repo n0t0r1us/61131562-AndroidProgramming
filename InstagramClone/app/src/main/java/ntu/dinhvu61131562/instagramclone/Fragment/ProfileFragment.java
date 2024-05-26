@@ -32,8 +32,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import ntu.dinhvu61131562.instagramclone.Adapter.MyFotoAdapter;
 import ntu.dinhvu61131562.instagramclone.EditProfileActivity;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
@@ -64,7 +66,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        profileId = prefs.getString("profileId",FirebaseAuth.getInstance().getCurrentUser().getUid());
+        profileId = prefs.getString("profileId","none");
 
         image_profile = view.findViewById(R.id.image_profile);
         options = view.findViewById(R.id.options);
@@ -125,6 +127,7 @@ public class ProfileFragment extends Fragment {
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(profileId).child("Người Theo Dõi")
                             .child(firebaseUser.getUid()).setValue(true);
+                    themThongBao();
                 } else if (btn.equals("Đang Theo Dõi")) {
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(firebaseUser.getUid()).child("Đang Theo Dõi")
@@ -154,6 +157,19 @@ public class ProfileFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void themThongBao(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Thông Báo")
+                .child(profileId);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userId", firebaseUser.getUid());
+        hashMap.put("text", "đã theo dõi bạn");
+        hashMap.put("postId", "");
+        hashMap.put("daDang", false);
+
+        reference.push().setValue(hashMap);
     }
 
     private void userInfo(){
