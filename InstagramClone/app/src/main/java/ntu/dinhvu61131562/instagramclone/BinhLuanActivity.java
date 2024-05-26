@@ -103,7 +103,20 @@ public class BinhLuanActivity extends AppCompatActivity {
         hashMap.put("nguoiDang", firebaseUser.getUid());
 
         reference.push().setValue(hashMap);
+        themThongBao();
         themBinhLuan.setText("");
+    }
+    private void themThongBao(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Thông Báo")
+                .child(idNguoiDang);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userId", firebaseUser.getUid());
+        hashMap.put("text", "đã bình luận: "+themBinhLuan.getText().toString());
+        hashMap.put("postId", postId);
+        hashMap.put("daDang", true);
+
+        reference.push().setValue(hashMap);
     }
 
     private void getImage(){
