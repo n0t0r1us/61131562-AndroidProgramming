@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import ntu.dinhvu61131562.instagramclone.BinhLuanActivity;
@@ -147,6 +148,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     FirebaseDatabase.getInstance().getReference().child("Likes")
                             .child(post.getPostId())
                             .child(firebaseUser.getUid()).setValue(true);
+                    themThongBao(post.getNguoiDang(), post.getPostId());
                 } else {
                     FirebaseDatabase.getInstance().getReference().child("Likes")
                             .child(post.getPostId())
@@ -242,6 +244,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             }
         });
+    }
+    private void themThongBao(String userId, String postId){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Thông Báo")
+                .child(userId);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userId", firebaseUser.getUid());
+        hashMap.put("text", "đã thích bài của bạn");
+        hashMap.put("postId", postId);
+        hashMap.put("daDang", true);
+
+        reference.push().setValue(hashMap);
     }
 
     private void nrLikes(final TextView likes, String postId){
