@@ -8,44 +8,80 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".DangKyActivity">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:src="@drawable/logo"/>
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập Tài khoản"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorAccent"
+        app:shapeAppearance="@style/Cut"
+        android:padding="10dp">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/taiKhoan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Tài khoản"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-    <EditText
-        android:id="@+id/hoTen"
+        android:layout_height="wrap_content"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Họ và tên"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-    <EditText
-        android:id="@+id/email"
+        android:hint="Nhập Họ và Tên"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorPrimaryDark"
+        app:shapeAppearance="@style/Rounded"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/hoTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Email"
+        android:hint="Nhập Email"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-    <EditText
-        android:id="@+id/matKhau"
+        android:padding="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorPrimaryDark"
+        app:shapeAppearance="@style/Rounded">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:hint="Nhập Mật khẩu"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/colorAccent"
+        app:shapeAppearance="@style/Cut"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/dangKy"
         android:layout_width="match_parent"

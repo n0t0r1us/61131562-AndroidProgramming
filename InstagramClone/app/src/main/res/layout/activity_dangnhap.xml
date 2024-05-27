@@ -8,29 +8,48 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".DangNhapActivity">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:src="@drawable/logo"/>
 
-    <EditText
-        android:id="@+id/email"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Email"
+        android:hint="Nhập Email"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/colorPrimaryDark"
+        app:shapeAppearance="@style/Rounded"
         android:inputType="textEmailAddress"
         android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-    <EditText
-        android:id="@+id/matKhau"
+        android:padding="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_bg"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:hint="Nhập Mật khẩu"
+        app:endIconMode="password_toggle"
+        android:padding="10dp"
+        app:endIconTint="@color/colorAccent"
+        app:shapeAppearance="@style/Cut">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/dangNhap"
@@ -40,14 +59,12 @@
         android:background="@drawable/btn_bg"
         android:text="Đăng Nhập"
         android:textColor="@color/colorPrimary" />
+
     <TextView
         android:id="@+id/txt_Dk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chưa có tài khoản? Đăng ký"
         android:layout_marginTop="10dp"/>
-
-
-
 
 </LinearLayout>

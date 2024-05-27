@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +26,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class DangKyActivity extends AppCompatActivity {
-    EditText taiKhoan, hoTen, email, matKhau;
+    TextInputEditText taiKhoan, hoTen, email, matKhau;
     Button dangKy;
     TextView txtDn;
     FirebaseAuth auth;
