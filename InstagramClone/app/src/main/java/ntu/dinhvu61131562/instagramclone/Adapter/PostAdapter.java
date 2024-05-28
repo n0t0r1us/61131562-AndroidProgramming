@@ -30,6 +30,7 @@ import ntu.dinhvu61131562.instagramclone.Fragment.PostDetailFragment;
 import ntu.dinhvu61131562.instagramclone.Fragment.ProfileFragment;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
+import ntu.dinhvu61131562.instagramclone.NguoiTheoDoiActivity;
 import ntu.dinhvu61131562.instagramclone.R;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -171,6 +172,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 Intent intent = new Intent(mContext, BinhLuanActivity.class);
                 intent.putExtra("postId", post.getPostId());
                 intent.putExtra("idNguoiDang", post.getNguoiDang());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, NguoiTheoDoiActivity.class);
+                intent.putExtra("id", post.getPostId());
+                intent.putExtra("Tiêu Đề", "Lượt Thích");
                 mContext.startActivity(intent);
             }
         });
