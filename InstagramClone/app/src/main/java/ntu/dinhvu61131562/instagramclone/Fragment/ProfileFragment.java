@@ -41,6 +41,7 @@ import ntu.dinhvu61131562.instagramclone.EditProfileActivity;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 import ntu.dinhvu61131562.instagramclone.NguoiTheoDoiActivity;
+import ntu.dinhvu61131562.instagramclone.OptionsActivity;
 import ntu.dinhvu61131562.instagramclone.R;
 public class ProfileFragment extends Fragment {
     ImageView image_profile, options;
@@ -138,6 +139,14 @@ public class ProfileFragment extends Fragment {
                             .child(firebaseUser.getUid()).removeValue();
 
                 }
+            }
+        });
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), OptionsActivity.class);
+                startActivity(intent);
             }
         });
         // Chuyển đổi giữa hiển thị bài đăng cá nhân và bài đăng đã lưu
