@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,8 @@ public class TrangChuFragment extends Fragment {
     private List<Post> postLists;
 
     private List<String> dangTheoDoiLists;
+
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class TrangChuFragment extends Fragment {
         postLists = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postLists);
         recyclerView.setAdapter(postAdapter);
+
+        progressBar = view.findViewById(R.id.loading);
 
         checkDangTheoDoi();
         return view;
@@ -87,6 +92,7 @@ public class TrangChuFragment extends Fragment {
                     }
                 }
                 postAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
