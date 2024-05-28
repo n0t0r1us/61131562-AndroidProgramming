@@ -46,7 +46,7 @@ public class TimKiemFragment extends Fragment {
         thanh_TimKiem = view.findViewById(R.id.thanh_TimKiem);
 
         mUsers = new ArrayList<>();
-        userAdapter = new UserAdapter(getContext(), mUsers);
+        userAdapter = new UserAdapter(getContext(), mUsers, true);
         recyclerView.setAdapter(userAdapter);
 
         readUsers();
