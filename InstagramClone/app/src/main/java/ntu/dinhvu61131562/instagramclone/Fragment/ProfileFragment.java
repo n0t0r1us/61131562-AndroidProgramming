@@ -40,6 +40,7 @@ import ntu.dinhvu61131562.instagramclone.Adapter.MyFotoAdapter;
 import ntu.dinhvu61131562.instagramclone.EditProfileActivity;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
 import ntu.dinhvu61131562.instagramclone.Model.User;
+import ntu.dinhvu61131562.instagramclone.NguoiTheoDoiActivity;
 import ntu.dinhvu61131562.instagramclone.R;
 public class ProfileFragment extends Fragment {
     ImageView image_profile, options;
@@ -153,6 +154,26 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.GONE);
                 recyclerView_saves.setVisibility(View.VISIBLE);
+            }
+        });
+
+        nguoiTheoDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NguoiTheoDoiActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("Tiêu Đề", "Người Theo Dõi");
+                startActivity(intent);
+            }
+        });
+
+        dangTheoDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NguoiTheoDoiActivity.class);
+                intent.putExtra("id", profileId);
+                intent.putExtra("Tiêu Đề", "Đang Theo Dõi");
+                startActivity(intent);
             }
         });
 
