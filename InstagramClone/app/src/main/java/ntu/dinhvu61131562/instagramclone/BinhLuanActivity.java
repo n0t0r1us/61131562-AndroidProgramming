@@ -59,14 +59,18 @@ public class BinhLuanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
+
         });
+        Intent intent = getIntent();
+        postId = intent.getStringExtra("postId");
+        idNguoiDang = intent.getStringExtra("idNguoiDang");
 
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         cmtList = new ArrayList<>();
-        cmtAdapter = new CmtAdapter(this, cmtList);
+        cmtAdapter = new CmtAdapter(this, cmtList, postId);
         recyclerView.setAdapter(cmtAdapter);
 
         themBinhLuan = findViewById(R.id.addCmt);
@@ -75,9 +79,7 @@ public class BinhLuanActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        Intent intent = getIntent();
-        postId = intent.getStringExtra("postId");
-        idNguoiDang = intent.getStringExtra("idNguoiDang");
+
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,11 +100,14 @@ public class BinhLuanActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Cmts")
                 .child(postId);
 
+        String cmtId = reference.push().getKey();
+
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("Cmt", themBinhLuan.getText().toString());
         hashMap.put("nguoiDang", firebaseUser.getUid());
+        hashMap.put("cmtId", cmtId);
 
-        reference.push().setValue(hashMap);
+        reference.child(cmtId).setValue(hashMap);
         themThongBao();
         themBinhLuan.setText("");
     }
