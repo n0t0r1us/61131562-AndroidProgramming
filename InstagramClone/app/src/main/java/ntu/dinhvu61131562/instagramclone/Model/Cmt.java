@@ -4,10 +4,12 @@ public class Cmt {
 
     private String Cmt;
     private String nguoiDang;
+    private String cmtId;
 
-    public Cmt(String cmt, String nguoiDang) {
+    public Cmt(String cmt, String nguoiDang, String cmtId) {
         this.Cmt = cmt;
         this.nguoiDang = nguoiDang;
+        this.cmtId = cmtId;
     }
 
     public Cmt() {
@@ -27,5 +29,13 @@ public class Cmt {
 
     public void setNguoiDang(String nguoiDang) {
         this.nguoiDang = nguoiDang;
+    }
+
+    public String getCmtId() {
+        return cmtId;
+    }
+
+    public void setCmtId(String cmtId) {
+        this.cmtId = cmtId;
     }
 }
