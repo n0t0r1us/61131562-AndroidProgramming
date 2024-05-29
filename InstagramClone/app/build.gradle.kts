@@ -44,4 +44,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     api ("com.theartofdev.edmodo:android-image-cropper:2.8.+")
     implementation("com.rengwuxian.materialedittext:library:2.1.4")
+    implementation ("com.github.shts:StoriesProgressView:3.0.0")
 }
