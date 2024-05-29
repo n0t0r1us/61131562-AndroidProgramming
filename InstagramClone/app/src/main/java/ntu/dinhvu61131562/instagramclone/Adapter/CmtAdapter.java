@@ -1,17 +1,22 @@
 package ntu.dinhvu61131562.instagramclone.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,11 +37,15 @@ public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.ViewHolder> {
     private Context mContext;
     private List<Cmt> mCmt;
 
+    private String postId;
+
     private FirebaseUser firebaseUser;
 
-    public CmtAdapter(Context mContext, List<Cmt> mCmt) {
+    public CmtAdapter(Context mContext, List<Cmt> mCmt, String postId) {
         this.mContext = mContext;
         this.mCmt = mCmt;
+        this.postId = postId;
+
     }
 
     @NonNull
@@ -72,6 +81,44 @@ public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.ViewHolder> {
                 Intent intent = new Intent(mContext, MainActivity.class);
                 intent.putExtra("idNguoiDang", cmt.getNguoiDang());
                 mContext.startActivity(intent);
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (cmt.getNguoiDang().equals(firebaseUser.getUid())){
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+                    alertDialog.setTitle("Bạn có muốn xóa?");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Không",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Có",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FirebaseDatabase.getInstance().getReference("Cmts")
+                                            .child(postId).child(cmt.getCmtId())
+                                            .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()){
+                                                        Toast.makeText(mContext, "Đã Xóa!", Toast.LENGTH_SHORT)
+                                                                .show();
+                                                    }
+                                                }
+                                            });
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
+                return false;
             }
         });
 
