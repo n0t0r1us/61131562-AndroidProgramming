@@ -10,15 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground" >
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
         android:background="?android:attr/windowBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_search_light"/>
+
     <EditText
         android:id="@+id/thanh_TimKiem"
         android:layout_width="match_parent"
@@ -27,7 +30,9 @@
         android:hint="Tìm..."
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"/>
+
     </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,6 +40,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/bar"
         android:id="@+id/recycle_view"/>
-
 
 </RelativeLayout>

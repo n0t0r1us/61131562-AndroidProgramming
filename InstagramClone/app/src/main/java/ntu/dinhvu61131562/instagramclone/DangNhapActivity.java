@@ -79,8 +79,10 @@ public class DangNhapActivity extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 pd.dismiss();
-                                                Intent intent = new Intent(DangNhapActivity.this, MainActivity.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                Intent intent = new Intent(DangNhapActivity.this,
+                                                        MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -97,12 +99,10 @@ public class DangNhapActivity extends AppCompatActivity {
                                                 Toast.LENGTH_SHORT).show();
 
                                     }
-
                                 }
                             });
                 }
             }
         });
-
     }
 }

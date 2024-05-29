@@ -102,12 +102,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                     FirebaseDatabase.getInstance().getReference().child("Theo Dõi")
                             .child(user.getId()).child("Người Theo Dõi")
                             .child(firebaseUser.getUid()).removeValue();
-
                 }
             }
         });
-
     }
+
     private void themThongBao(String userId){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Thông Báo")
                 .child(userId);

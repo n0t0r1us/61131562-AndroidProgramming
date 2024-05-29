@@ -107,6 +107,7 @@ public class TrangChuFragment extends Fragment {
                         }
                     }
                 }
+
                 postAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
             }

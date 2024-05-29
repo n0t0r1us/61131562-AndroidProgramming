@@ -178,7 +178,6 @@ public class NguoiTheoDoiActivity extends AppCompatActivity {
                 userAdapter.notifyDataSetChanged();
             }
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -106,8 +106,10 @@ public class DangKyActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         pd.dismiss();
-                                        Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        Intent intent = new Intent(DangKyActivity.this,
+                                                MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                     }
                                 }
@@ -116,7 +118,6 @@ public class DangKyActivity extends AppCompatActivity {
                             pd.dismiss();
                             Toast.makeText(DangKyActivity.this, "Bạn không thể đăng ký bằng email hoặc mật khẩu này!",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });

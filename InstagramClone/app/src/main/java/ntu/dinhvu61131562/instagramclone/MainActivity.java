@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                     } else if (itemId == R.id.nav_tim){
                         selectedFrag = new ThongBaoFragment();
                     } else if (itemId == R.id.nav_pro5){
-                        SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE)
+                                .edit();
                         editor.putString("profileId", FirebaseAuth.getInstance().getCurrentUser().getUid());
                         editor.apply();
                         selectedFrag = new ProfileFragment();

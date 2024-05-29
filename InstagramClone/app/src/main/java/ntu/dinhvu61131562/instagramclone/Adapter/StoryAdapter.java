@@ -44,10 +44,12 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == 0){
-            View view = LayoutInflater.from(mContext).inflate(R.layout.them_story_item, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.them_story_item, parent,
+                    false);
             return new StoryAdapter.ViewHolder(view);
         } else {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.story_item, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.story_item, parent,
+                    false);
             return new StoryAdapter.ViewHolder(view);
         }
     }
@@ -153,12 +155,14 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent  = new Intent(mContext, StoryActivity.class);
-                                        intent.putExtra("userId", FirebaseAuth.getInstance().getCurrentUser()
+                                        intent.putExtra("userId", FirebaseAuth.getInstance()
+                                                .getCurrentUser()
                                                 .getUid());
                                         mContext.startActivity(intent);
                                         dialog.dismiss();
                                     }
                                 });
+
                         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Thêm Story",
                                 new DialogInterface.OnClickListener() {
                                     @Override

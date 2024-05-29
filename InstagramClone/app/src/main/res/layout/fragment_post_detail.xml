@@ -28,8 +28,11 @@
                     android:textStyle="bold"
                     android:text="Ảnh"
                     android:textColor="@color/colorPrimaryDark"/>
+
             </RelativeLayout>
+
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

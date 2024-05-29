@@ -41,7 +41,8 @@ public class ThongBaoAdapter extends RecyclerView.Adapter<ThongBaoAdapter.ViewHo
     @NonNull
     @Override
     public ThongBaoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.thongbao_item , parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.thongbao_item , parent,
+                false);
         return new ThongBaoAdapter.ViewHolder(view);
     }
 

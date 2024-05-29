@@ -29,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/skip"/>
+
     </LinearLayout>
     
     <jp.shts.android.storiesprogressview.StoriesProgressView
@@ -63,6 +64,7 @@
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:layout_toEndOf="@id/story_photo"/>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -91,6 +93,7 @@
             android:layout_gravity="center"
             android:id="@+id/soNguoiDaXem"
             android:textColor="#fff"/>
+
     </LinearLayout>
 
     <ImageView

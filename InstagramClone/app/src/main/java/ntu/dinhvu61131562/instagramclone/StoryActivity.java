@@ -30,7 +30,6 @@ import ntu.dinhvu61131562.instagramclone.Model.Story;
 import ntu.dinhvu61131562.instagramclone.Model.User;
 
 public class StoryActivity extends AppCompatActivity implements StoriesProgressView.StoriesListener {
-
     int counter = 0;
     long pressTime = 0L;
     long limit = 500L;
@@ -145,7 +144,6 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
 
         themLuotXem(storyIds.get(counter));
         soNguoiDaXem(storyIds.get(counter));
-
     }
 
     @Override
@@ -154,13 +152,11 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
         Glide.with(getApplicationContext()).load(images.get(--counter)).into(image);
 
         soNguoiDaXem(storyIds.get(counter));
-
     }
 
     @Override
     public void onComplete() {
         finish();
-
     }
 
     @Override

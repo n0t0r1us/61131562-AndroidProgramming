@@ -182,19 +182,18 @@ public class EditProfileActivity extends AppCompatActivity {
                     }else {
                         Toast.makeText(EditProfileActivity.this, "Thất bại!", Toast.LENGTH_SHORT)
                                 .show();
-
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT)
+                            .show();
                 }
             });
         } else {
             Toast.makeText(this, "Không có hình ảnh nào được chọn!", Toast.LENGTH_SHORT).show();
         }
-
     }
     //crtl+o
     @Override

@@ -103,7 +103,8 @@ public class PostActivity extends AppCompatActivity {
                         Uri downloadUri = task.getResult();
                         myUrl = downloadUri.toString();
 
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+                        DatabaseReference reference = FirebaseDatabase.getInstance()
+                                .getReference("Posts");
 
                         String postId = reference.push().getKey();
 
@@ -120,14 +121,16 @@ public class PostActivity extends AppCompatActivity {
                         startActivity(new Intent(PostActivity.this, MainActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(PostActivity.this, "Thất bại!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PostActivity.this, "Thất bại!", Toast.LENGTH_SHORT)
+                                .show();
                     }
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(PostActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PostActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT)
+                            .show();
                 }
             });
         }else {

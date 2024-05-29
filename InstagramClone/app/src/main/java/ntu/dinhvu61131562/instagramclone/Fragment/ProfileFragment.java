@@ -219,7 +219,6 @@ public class ProfileFragment extends Fragment {
                     bio.setText(user.getBio());
                 }
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -291,7 +290,6 @@ public class ProfileFragment extends Fragment {
                     }
                 }
                 posts.setText(""+i);
-
             }
 
             @Override
