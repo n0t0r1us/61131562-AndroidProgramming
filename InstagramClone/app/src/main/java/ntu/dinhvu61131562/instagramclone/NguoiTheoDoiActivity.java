@@ -74,7 +74,30 @@ public class NguoiTheoDoiActivity extends AppCompatActivity {
             case "Người Theo Dõi":
                 getNguoiTheoDoi();
                 break;
+            case "Lượt Xem":
+                getLuotXem();
+                break;
         }
+    }
+
+    private void getLuotXem(){
+        DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Story")
+                .child(id).child(getIntent().getStringExtra("storyId")).child("Lượt Xem");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                idList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    idList.add(dataSnapshot.getKey());
+                }
+                showUsers();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void getLuotThich() {
