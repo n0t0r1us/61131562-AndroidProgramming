@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ntu.dinhvu61131562.instagramclone.Adapter.PostAdapter;
+import ntu.dinhvu61131562.instagramclone.Adapter.StoryAdapter;
 import ntu.dinhvu61131562.instagramclone.Model.Post;
+import ntu.dinhvu61131562.instagramclone.Model.Story;
 import ntu.dinhvu61131562.instagramclone.R;
 
 public class TrangChuFragment extends Fragment {
@@ -31,6 +33,10 @@ public class TrangChuFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postLists;
+
+    private RecyclerView recyclerView_story;
+    private StoryAdapter storyAdapter;
+    private List<Story> storyList;
 
     private List<String> dangTheoDoiLists;
 
@@ -49,6 +55,15 @@ public class TrangChuFragment extends Fragment {
         postLists = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postLists);
         recyclerView.setAdapter(postAdapter);
+
+        recyclerView_story = view.findViewById(R.id.recycle_view_story);
+        recyclerView_story.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        recyclerView_story.setLayoutManager(linearLayoutManager1);
+        storyList = new ArrayList<>();
+        storyAdapter = new StoryAdapter(getContext(), storyList);
+        recyclerView_story.setAdapter(storyAdapter);
 
         progressBar = view.findViewById(R.id.loading);
 
@@ -69,6 +84,7 @@ public class TrangChuFragment extends Fragment {
                     dangTheoDoiLists.add(dataSnapshot.getKey());
                 }
                 readPosts();
+                docStory();
             }
 
             @Override
@@ -93,6 +109,37 @@ public class TrangChuFragment extends Fragment {
                 }
                 postAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void docStory(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Story");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long timeCurrent = System.currentTimeMillis();
+                storyList.clear();
+                storyList.add(new Story("", 0, 0, "",
+                        FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                for (String id : dangTheoDoiLists){
+                    int countStory = 0;
+                    Story story = null;
+                    for (DataSnapshot dataSnapshot : snapshot.child(id).getChildren()){
+                        story = dataSnapshot.getValue(Story.class);
+                        if (timeCurrent > story.getTimeStart() && timeCurrent < story.getTimeEnd()){
+                            countStory++;
+                        }
+                    }
+                    if (countStory > 0 ){
+                        storyList.add(story);
+                    }
+                }
+                storyAdapter.notifyDataSetChanged();
             }
 
             @Override
