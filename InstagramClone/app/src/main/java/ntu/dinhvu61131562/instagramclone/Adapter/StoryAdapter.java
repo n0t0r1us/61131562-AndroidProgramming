@@ -75,7 +75,12 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                 } else {
                     Intent intent  = new Intent(mContext, StoryActivity.class);
                     intent.putExtra("userId", story.getUserId());
-                    mContext.startActivity(intent);
+                    if (mContext instanceof Activity){
+                        Activity activity = (Activity) mContext;
+                        if (!activity.isFinishing() && !activity.isDestroyed()) {
+                            mContext.startActivity(intent);
+                        }
+                    }
                 }
 
             }
@@ -132,7 +137,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         });
     }
 
-    private void myStory(TextView textView, ImageView imageView, final boolean click){
+    private void myStory(final TextView textView, final ImageView imageView, final boolean click){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Story")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -146,37 +151,40 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                         count++;
                     }
                 }
-
                 if (click){
                     if (count > 0){
-                        AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
-                        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Xem Story",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent  = new Intent(mContext, StoryActivity.class);
-                                        intent.putExtra("userId", FirebaseAuth.getInstance()
-                                                .getCurrentUser()
-                                                .getUid());
-                                        mContext.startActivity(intent);
-                                        dialog.dismiss();
-                                    }
-                                });
+                        if (mContext instanceof Activity) {
+                            Activity activity = (Activity) mContext;
+                            if (!activity.isFinishing() && !activity.isDestroyed()) {
+                                AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Xem Story",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent intent = new Intent(mContext, StoryActivity.class);
+                                                intent.putExtra("userId", FirebaseAuth.getInstance()
+                                                        .getCurrentUser()
+                                                        .getUid());
+                                                mContext.startActivity(intent);
+                                                dialog.dismiss();
+                                            }
+                                        });
 
-                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Thêm Story",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(mContext, ThemStoryActivity.class);
-                                        mContext.startActivity(intent);
-                                        dialog.dismiss();
-                                    }
-                                });
-                        alertDialog.show();
+                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Thêm Story",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent intent = new Intent(mContext, ThemStoryActivity.class);
+                                                mContext.startActivity(intent);
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+                        }
                     } else {
                         Intent intent = new Intent(mContext, ThemStoryActivity.class);
                         mContext.startActivity(intent);
-
                     }
                 } else {
                     if (count > 0){
@@ -188,7 +196,6 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
